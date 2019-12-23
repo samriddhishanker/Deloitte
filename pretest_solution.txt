@@ -1,0 +1,21 @@
+import java.util.*;
+class Display
+{
+	public static void main(String args[])
+	{
+		String a, rev="";
+		Scanner sc= new Scanner(System.in);
+		Scanner s=sc.readLine();
+		int len=a.length();
+		int c=0;
+		for(int i=len-1;i>=0;i--)
+		{
+			rev=rev+a.charAt(i);
+			if(a.charAt(i)=='a'||a.charAt(i)=='e'||a.charAt(i)=='i'||a.charAt(i)=='o'||a.charAt(i)=='u'||
+			   a.charAt(i)=='A'||a.charAt(i)=='E'||a.charAt(i)=='I'||a.charAt(i)=='O'||a.charAt(i)=='U')
+				c++;
+		}
+		System.out.println("reverse of string=" +rev);
+		System.out.println("number of vowels =" +c);
+	}
+}
