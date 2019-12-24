@@ -1,29 +1,27 @@
-//local and instance variable
-package demo;
+package oops;
 
 public class Demo1 {
-	int n=10;				//variable name cant be keywords			
-	float marks=90.98f;		//double value by default therefore f is needed
-	Byte grade= 120;
-	String String ="mohan";		//String is a class and can be used as variable
-	final int DELOITTE_MARKS = 100; //cant be changed
-	int i;					//instance variable (value is 0 if not initialised)
-	long p=1;
-	int a=(int) p;				//type casting needed
-	public void display()
-	{
-		System.out.println("the sum is "+ (n+marks+grade));
-		System.out.println("your name is " +String);
-		int j=30;				//local variable initialisation is necessary
-		if(n==10)
-		{
-			j=20;
-		}
-		System.out.println((i+n)-j);
-		
+	int num1=500;
+	int num2=900;
+	
+	public Demo1() {
+		num1++;
+		num2=++num1;
 	}
+	
+	public Demo1(int num2, Demo1 demo) {
+		num2=++this.num1;
+		this.num1=--demo.num2;
+		this.num2=num2++;
+		demo.num1=++num2;
+	}
+	
 	public static void main(String[] args) {
-		Demo1 d = new Demo1();	//cant use instance variable in a static method
-		d.display();
+		int num1=8;
+		int num2=16;
+		Demo1 d1=new Demo1(); 
+		Demo1 d2= new Demo1(num2,d1);
+		System.out.println(d1.num1+d2.num2+num1);
+		System.out.println(d2.num2+d1.num1+num2);
 	}
 }
