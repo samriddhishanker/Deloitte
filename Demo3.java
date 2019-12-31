@@ -1,21 +1,21 @@
-package exceptiondemos;
+package collectiondemo;
+
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Demo3 {
-	
-	public void display() {
-		System.out.println("welcome in display");
-		try {
-			Thread.sleep(1000);	//checked exception
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("bye");
-		
-	}
+
 	public static void main(String[] args) {
-		System.out.println("main started");
-		Demo3 d= new Demo3();
-		d.display();
-		System.out.println("main ended");
+		Set names = new HashSet(); //HashSet(no order) LinkedHashSet(in given way)
+		names.add("Jay");
+		names.add("veeru");
+		names.add("Neha");
+		names.add("Spring"); //sets dont accept duplicate
+		
+		names.remove("Neha");
+		System.out.println(names);
+
 	}
+
 }

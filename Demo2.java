@@ -1,20 +1,25 @@
-package exceptiondemos;
+package collectiondemo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Demo2 {
-	String name;
-	public void display() {
-		System.out.println("welcome in display");
-		try {
-			System.out.println(name.length());
-		} 
-		catch (Exception e) {
-			System.out.println("no name");
-		}	
-	}
+
 	public static void main(String[] args) {
-		System.out.println("main started");
-		Demo2 d= new Demo2();
-		d.display();
-		System.out.println("main ended");
+		List names = new ArrayList(); //arraylist(itration/async faster)/stack(fifo)
+									//vector(sync)/linkedlist(insertion/deletion)
+		names.add("Himanshu");
+		names.add("Anthony");
+		names.add("swami");
+		names.add("swami"); //lists accept duplicate
+		
+		System.out.println(names);
+		names.add(2,"reddy");//add at position 2 starts from 0		
+		System.out.println(names);
+		names.remove("swami");
+		System.out.println(names);
+		System.out.println(names.isEmpty());
+		System.out.println(names.size());
 	}
+
 }
