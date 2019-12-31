@@ -1,19 +1,20 @@
 package exceptiondemos;
 
-public class Demo2 {
-	String name;
+public class Demo3 {
+	
 	public void display() {
 		System.out.println("welcome in display");
 		try {
-			System.out.println(name.length());
-		} 
-		catch (Exception e) {
-			System.out.println("no name");
-		}	
+			Thread.sleep(1000);	//checked exception
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("bye");
+		
 	}
 	public static void main(String[] args) {
 		System.out.println("main started");
-		Demo2 d= new Demo2();
+		Demo3 d= new Demo3();
 		d.display();
 		System.out.println("main ended");
 	}
