@@ -1,25 +1,21 @@
-package collectiondemo;
+package iodemos;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
 
 public class Demo2 {
 
-	public static void main(String[] args) {
-		List names = new ArrayList(); //arraylist(itration/async faster)/stack(fifo)
-									//vector(sync)/linkedlist(insertion/deletion)
-		names.add("Himanshu");
-		names.add("Anthony");
-		names.add("swami");
-		names.add("swami"); //lists accept duplicate
-		
-		System.out.println(names);
-		names.add(2,"reddy");//add at position 2 starts from 0		
-		System.out.println(names);
-		names.remove("swami");
-		System.out.println(names);
-		System.out.println(names.isEmpty());
-		System.out.println(names.size());
+	public static void main(String[] args) throws IOException {
+		File file = new File("e:\\deloitte\\Batch\\BatchMates.txt");//points to the file
+		file.createNewFile();
+		File folder=new File("e:\\Deloitte\\Batch");
+		File f[]=folder.listFiles();
+		for(File f1:f)
+		{
+			if(f1.isFile())
+				System.out.println("The file is: "+f1.getName());
+			if(f1.isDirectory())
+				System.out.println("The directory is: "+f1.getName());
+		}
 	}
-
 }

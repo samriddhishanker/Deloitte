@@ -1,6 +1,6 @@
-package objectdemo;
+package collectiondemo;
 
-public class Customer {	//plain old java object class(pojo)
+public class Customer implements Comparable<Customer>{	//plain old java object class(pojo)
 	private int customerId;
 	private String customerName;
 	private String customerAddress;
@@ -43,7 +43,7 @@ public class Customer {	//plain old java object class(pojo)
 	}
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerAddress="
+		return "\n Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerAddress="
 				+ customerAddress + ", billAmount=" + billAmount + "]";
 	}
 
@@ -83,7 +83,13 @@ public class Customer {	//plain old java object class(pojo)
 			return false;
 		return true;
 	}
-	
-	
 
+	@Override
+	public int compareTo(Customer o) {
+		if(this.getBillAmount() > o.getBillAmount())
+			return 0;		//ascending order if return -1 is first descending order
+		else
+			return -1;
+	}
 }
+	
