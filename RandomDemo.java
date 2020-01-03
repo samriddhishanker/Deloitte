@@ -16,12 +16,18 @@ public class RandomDemo {
 		file.seek(a);
 		file.writeUTF("samriddhi shanker");
 		file.seek(a);
-		String str = file.readUTF();
+		String str = file.readUTF(); 
+		
+		
+		file.seek(0);
+		String str1 = file.readLine();//readLine is used to read the file from starting
 		
 		file.close();
 		
 		System.out.println("file content is :");
 		System.out.println(str);
+		System.out.println(str1);
+
 	}
 
 }

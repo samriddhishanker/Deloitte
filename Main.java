@@ -1,24 +1,28 @@
-package iodemos;
+package jdbcdemos;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
-		Customers customer= new Customers();
+	public static void main(String[] args) throws SQLException {
+		
+		Customers customer = new Customers();
 		customer.accept();
 		
-		ObjectOutputStream stream = 
-				new ObjectOutputStream(new BufferedOutputStream(
-						new FileOutputStream(new File("delu.txt")))); //serialization
-		stream.writeObject(customer);
+		Connection connection = DBConnection.makeConnection();
+		PreparedStatement statement = 
+				connection.prepareStatement("insert into hr.customer values(?,?,?,?)");
+		statement.setInt(1, customer.getCustomerId());
+		statement.setString(2, customer.getCustomerName());
+		statement.setString(3, customer.getCustomerAddress());
+		statement.setInt(4, customer.getBillAmount());
 		
-		stream.close();
-		System.out.println("data stored");
+		statement.executeUpdate();
+		
+		System.out.println(customer.getCustomerName()+" ,your record saved sucessfully");
+		
 	}
 
 }

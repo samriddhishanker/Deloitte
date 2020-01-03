@@ -1,4 +1,4 @@
-package iodemos;
+package jdbcdemos;
 
 import java.io.Serializable;
 import java.util.Scanner;
@@ -16,6 +16,15 @@ public class Customers implements Serializable,Comparable<Customers>{	//plain ol
         System.out.println("Enter customer address : "); customerAddress = scanner.next();
         System.out.println("Enter bill amount : "); billAmount = scanner.nextInt();
     }
+	
+	public void updateCustomer() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter customer id to update : "); customerId = scanner.nextInt();
+        System.out.println("Enter new customer name : "); customerName = scanner.next();
+        System.out.println("Enter new customer address : "); customerAddress = scanner.next();
+        System.out.println("Enter new bill amount : "); billAmount = scanner.nextInt();
+    }
+	
 	
 	public Customers(){
 		
@@ -98,7 +107,7 @@ public class Customers implements Serializable,Comparable<Customers>{	//plain ol
 	@Override
 	public int compareTo(Customers o) {
 		if(this.getBillAmount() > o.getBillAmount())
-			return 0;		//ascending order if return -1 is first descending order
+			return 0;		//ascending order (if return -1 is first descending order)
 		else
 			return -1;
 	}
