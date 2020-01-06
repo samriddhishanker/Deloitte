@@ -1,24 +1,50 @@
-import java.util.Date;
+package com;
 
-import finance.Salary;
-public class Welcome {
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-	public static void main(String[] args) {
-		System.out.println("welcome in eclipse IDE");
-		//Apple apple=new Apple
-		Apple.eatApple();
-		//Ball ball = new Ball();
-		Ball.playBall();
-		//Thanks thanks = new Thanks();
-		Thanks.sayThanks();
-		//Bye bye= new Bye();
-		Bye.sayBye();
-		//Salary s=new Salary();
-		int result=Salary.calculateSalary(65000,3800);
-		System.out.println(result);
+import com.cms.deloitte.dao.CustomerDAO;
+import com.cms.deloitte.dao.impl.CustomerDAOImpl;
+import com.cms.deloitte.model.Customer;
+
+public class Welcome extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+ 
+    public Welcome() {
+        super();
+    }
+
+	int counter=0;
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		counter++;
 		
-		Date d= new Date();
-		System.out.println("current date is :" +d);
+		
+		int customerId = Integer.parseInt(request.getParameter("customerId"));
+		String customerName = request.getParameter("customerName");
+		String customerAddress = request.getParameter("customerAddress");
+		int billAmount = Integer.parseInt(request.getParameter("billAmount"));
+		response.getWriter().println("<h1>Welcome to my website: "+customerId);
+		response.getWriter().println("<h1>Your id is : "+customerName);
+		response.getWriter().println("<h1>Your address is: "+customerAddress);
+		response.getWriter().println("<h1>Your billamount is : "+billAmount);
+		response.getWriter().println("<h1>you are visitor number: "+counter);
+		//response.getWriter().println("<h1><a href='Shop.html'> Shop</a>");
+		
+		Customer customer = new Customer(customerId,customerName,customerAddress,billAmount);
+		
+		CustomerDAO customerDAO = new CustomerDAOImpl();
+		if(customerDAO.isCustomerExists(customerId))
+		{
+			response.getWriter().println(customerId+" already exists");
+		}
+		else
+		{
+			customerDAO.addCustomer(customer);
+			response.getWriter().println(customerName+" added successfully");
+		}
 	}
-	
+
 }

@@ -24,9 +24,9 @@ public class DBConnection {
 			String password = properties.getProperty("password");
 			
 			Class.forName(driver);
-			System.out.println("driver loaded");
+			//System.out.println("driver loaded");
 			connection = DriverManager.getConnection(url,username,password);
-			System.out.println("Connected");
+			//System.out.println("Connected");
 		}
 		catch (ClassNotFoundException e)
 		{

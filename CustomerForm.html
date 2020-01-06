@@ -31,24 +31,31 @@
 		
 		if(cid.length==0){
 			errorCustomerId.innerHTML="<font color=red>Please enter customer id</font>"
+			return false;
 		}
 		else if(cid.length<5){
 			errorCustomerId.innerHTML="<font color=red>Please enter customer id of atleast 5 digits</font>"
+			return false;		
 		}
 		else if(cname.length == 0 ){
 			errorCustomerName.innerHTML="<font color=red>Pease enter your name</font>"
+			return false;
 		}
 		else if(cadd.length==0){
 			errorCustomerAddress.innerHTML="<font color=red>Please enter Customer address</font>"
+			return false;
 		}
 		else if(cadd != "Pune" && cadd != "Mumbai" && cadd != "Delhi"){
 			errorCustomerAddress.innerHTML="<font color=red>Pease enter Pune/Mumbai/Delhi</font>"
+			return false;
 		}
 		else if(cbill == 0){
 			errorBillAmount.innerHTML="<font color=red>Please enter a bill amount </font>"
+			return false;
 		}
 		else if(cbill.length < 0) {
 			errorBillAmount.innerHTML="<font color=red>Please enter positive bill amount</font>"
+			return false;
 		}
 		else{
 			Custid.innerHTML="<font color=green>customer id: "+cid
@@ -61,7 +68,7 @@
 </script>
 </head>
 <body>
-	<form>
+	<form action="Welcome" onsubmit="return validate()">
 		<table cellspacing="10" cellpadding="10" align="center" border="0">
 		<caption><h2>Customer Form</h2></caption>
 			<tr>
@@ -85,10 +92,7 @@
 				<td><span id= "errorBillAmount"></span></td>
 			</tr>
 			<tr>
-				<td align="center">
-				<input type="submit" value="Save">
-				<input type="button" value="check" onclick="validate()">
-				</td>
+				<td align="center"><input type="submit" value="Save" ></td>
 				<td align="center"><input type ="reset" value="Clear"></td>
 			</tr>
 				<tr><td><div id= "Custid" ></div></td></tr>
