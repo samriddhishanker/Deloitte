@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -96,6 +98,17 @@ public class CustomerDAOImpl implements CustomerDAO{
 		Session session = factory.openSession();
 		Query query= session.createQuery("select c.customerName from Customer c where c.billAmount > "+billAmount);
 		return query.list();
+	}
+
+	@Override
+	public List<Customer> filterCustomer(String customerAddress, int billAmount) {
+		Session session = factory.openSession();
+		Criteria criteria = session.createCriteria(Customer.class);
+		criteria.add(Restrictions.like("customerAddress", customerAddress));
+		criteria.add(Restrictions.gt("billAmount", billAmount));
+		
+		return criteria.list();
+		
 	}
 
 	

@@ -21,9 +21,10 @@ public class LaunchCustomerApplication {
 			System.out.println("#### 4. Fetch single Customers ####");
 			System.out.println("#### 5. Fetch all the Customers ####");
 			System.out.println("#### 6. Fetch all the Customers by bill amount ####");
+			System.out.println("#### 7. Fetch all the Customers by bill amount and address ####");
 			System.out.println("#### 10. E X I T ####");
 			Scanner scanner = new Scanner(System.in);
-			System.out.println("Enter your choice (1-6)");
+			System.out.println("Enter your choice (1-10)");
 			int choice = scanner.nextInt();
 			if (choice == 1) {
 				Customer customer = new Customer();
@@ -79,6 +80,15 @@ public class LaunchCustomerApplication {
 				int billAmount = scanner.nextInt();
 				List<String> allNames = customerDAO.filterCustomer(billAmount);
 				System.out.println("customers with bill amount greater than "+billAmount);
+				System.out.println(allNames);
+			}
+			if (choice == 7) {
+				System.out.println("Please enter bill amount to search");
+				int billAmount = scanner.nextInt();
+				System.out.println("Please enter address to search");
+				String customerAddress = scanner.next();
+				List<Customer> allNames = customerDAO.filterCustomer(customerAddress,billAmount);
+				System.out.println("customers with bill amount greater than "+billAmount+" and address= "+customerAddress);
 				System.out.println(allNames);
 			}
 			if (choice == 10) {
