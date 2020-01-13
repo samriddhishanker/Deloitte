@@ -3,9 +3,14 @@ package com;
 import java.io.Serializable;
 import java.util.Scanner;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Customer implements Serializable {
+public class Customer implements Serializable, InitializingBean, DisposableBean {
 	private int customerId;
 	private String customerName;
 	private String customerAddress;
@@ -53,6 +58,15 @@ public class Customer implements Serializable {
 		billAmount = scanner.nextInt();
 	}
 
+	@PostConstruct
+	public void dd() {
+		System.out.println("###init via annotation");
+	}
+	
+	@PreDestroy
+	public void dd2() {
+		System.out.println("####destroy via annotation");
+	}
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -134,5 +148,15 @@ public class Customer implements Serializable {
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerAddress="
 				+ customerAddress + ", billAmount=" + billAmount + ", \ncontactDetails=" + contactDetails + "]";
+	}
+
+	public void destroy() throws Exception {
+		System.out.println("####destroy via interface");
+		
+	}
+
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("####init via interface");
+		
 	}
 }

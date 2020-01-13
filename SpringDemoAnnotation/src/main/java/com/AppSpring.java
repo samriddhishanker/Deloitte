@@ -2,6 +2,8 @@ package com;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+
 import com.config.AppConfig;
 
 public class AppSpring 
@@ -9,7 +11,9 @@ public class AppSpring
     public static void main( String[] args )
     {
     	
-    	ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+    	//ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+    	
+    	AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
     	
     	Customer customer = context.getBean(Customer.class);
     	customer.setCustomerId(1990);
@@ -24,6 +28,9 @@ public class AppSpring
     	//customer.setContactDetails(contactDetails);
     	
         System.out.println(customer);
+        Customer customer1 = context.getBean(Customer.class);
+        
+        context.registerShutdownHook();
        
     }
 }
