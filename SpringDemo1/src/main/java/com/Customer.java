@@ -2,6 +2,7 @@ package com;
 
 import java.io.Serializable;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Customer implements Serializable {
 	private int customerId;
@@ -9,6 +10,7 @@ public class Customer implements Serializable {
 	private String customerAddress;
 	private int billAmount;
 	private ContactDetails contactDetails;
+	private Set cards;
 
 	public Customer() {
 		System.out.println("default cons called");
@@ -47,6 +49,14 @@ public class Customer implements Serializable {
 		customerAddress = scanner.next();
 		System.out.println("Enter bill amount : ");
 		billAmount = scanner.nextInt();
+	}
+
+	public Set getCards() {
+		return cards;
+	}
+
+	public void setCards(Set cards) {
+		this.cards = cards;
 	}
 
 	public int getCustomerId() {
@@ -129,6 +139,7 @@ public class Customer implements Serializable {
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerAddress="
-				+ customerAddress + ", billAmount=" + billAmount + ", \ncontactDetails=" + contactDetails + "]";
+				+ customerAddress + ", billAmount=" + billAmount + ", contactDetails=" + contactDetails + ", cards="
+				+ cards + "]";
 	}
 }

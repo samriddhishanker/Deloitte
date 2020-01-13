@@ -9,6 +9,14 @@
 		<property name="customerName" value="ahmed"></property>
 		<property name="customerAddress" value="bangalore"></property>
 		<property name="billAmount" value="98000"></property>
+		<property name="cards">
+			<set>
+				<value>HDFC</value>
+				<value>AXIS</value>
+				<value>SBI</value>
+				<value>ICICI</value>
+			</set>
+		</property>
 		<!-- <property name="contactDetails" ref="cd"></property> -->
 	</bean>
 

@@ -11,7 +11,7 @@ public class AppSpring
     {
     	Resource resource = new ClassPathResource("beans.xml");
     	BeanFactory factory = new XmlBeanFactory(resource);	
-        Customer customer= (Customer) factory.getBean("cust2");
+        Customer customer= (Customer) factory.getBean("cust");
         //Customer customer2= (Customer) factory.getBean("cust2");
         //customer.setCustomerName("sam");
         
